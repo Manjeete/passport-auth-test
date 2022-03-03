@@ -1,4 +1,3 @@
-import logo from "./logo.svg";
 import "./App.css";
 import axios from "axios";
 
@@ -13,6 +12,15 @@ function App() {
     })
       .then((res) => {
         window.open(res.request.responseURL, '_blank');
+        axios({
+          url:"http://127.0.0.1:8080/api/v1/user/auth/google/callback",
+          method:"GET"
+        })
+        .then((res)=>{
+          console.log(res)
+        }).catch((err) =>{
+          console.log(err);
+        })
       })
       .catch((err) => {
         console.log(err);
@@ -21,18 +29,10 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
         <p onClick={googleFunc}>
-          Edit <code>src/App.js</code> and save to reload.
+          <button>google auth</button>
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        
       </header>
     </div>
   );
