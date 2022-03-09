@@ -12,15 +12,6 @@ function App() {
     })
       .then((res) => {
         window.open(res.request.responseURL, '_blank');
-        axios({
-          url:"http://127.0.0.1:8080/api/v1/user/auth/google/callback",
-          method:"GET"
-        })
-        .then((res)=>{
-          console.log(res)
-        }).catch((err) =>{
-          console.log(err);
-        })
       })
       .catch((err) => {
         console.log(err);
